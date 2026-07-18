@@ -1,0 +1,27 @@
+# Конфигурация AppVeyor — по требованию задания.
+# Основной деплой на GitHub Pages выполняет GitHub Actions (см. .github/workflows),
+# AppVeyor здесь проверяет сборку независимо, вторым CI-пайплайном.
+
+image: Ubuntu2204
+
+environment:
+  nodejs_version: "20"
+
+install:
+  - nvm install $nodejs_version
+  - nvm use $nodejs_version
+  - node --version
+  - npm --version
+  - npm ci
+
+# Отключаем автосборку MSBuild/.NET, которую AppVeyor включает по умолчанию —
+# для чистого Node.js-проекта она не нужна.
+build: off
+
+test_script:
+  - npm run lint
+  - npm test
+  - npm run build
+
+cache:
+  - node_modules
