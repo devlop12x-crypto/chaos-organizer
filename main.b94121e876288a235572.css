@@ -59,6 +59,10 @@ body {
 .app {
   height: 100dvh;
   display: grid;
+  /* minmax(0, 1fr) вместо неявной auto-колонки: без этого широкий контент
+     (лента с max-width 760px) распирает сетку шире экрана на телефонах —
+     классический «grid blowout». */
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto auto 1fr auto;
   overflow: hidden;
 }
