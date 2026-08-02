@@ -1,0 +1,31 @@
+# Chaos Organizer — поднятие всего проекта одной командой.
+#
+# Ожидается, что оба репозитория склонированы рядом в одну папку:
+#   ./chaos-organizer          (этот репозиторий)
+#   ./chaos-organizer-backend  (серверная часть)
+#
+# Запуск из ЭТОГО каталога:  docker compose up --build
+# Приложение: http://localhost:8080 (фронтенд сам найдёт API на :7070 —
+# конфиг src/js/config.js для localhost указывает на локальный сервер).
+
+services:
+  backend:
+    build: ../chaos-organizer-backend2/chaos-organizer-backend
+    ports:
+      - "7070:7070"
+    volumes:
+      - chaos-data:/app/data        # база SQLite
+      - chaos-uploads:/app/uploads  # загруженные файлы
+    restart: unless-stopped
+
+  frontend:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  chaos-data:
+  chaos-uploads:
