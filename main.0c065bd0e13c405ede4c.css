@@ -15,10 +15,51 @@
   --c-accent-soft: #eef0fb;
   --c-user-bubble: #e3f4d3;
   --c-danger: #e5484d;
+  --c-danger-dark: #c93a3f;
   --c-mark: #ffe58f;
+  --c-hover: rgba(74, 86, 198, 0.08);
+  --c-hover-neutral: rgba(31, 39, 51, 0.06);
+  --c-dots: rgba(74, 86, 198, 0.10);
+  --c-empty: rgba(255, 255, 255, 0.8);
   --radius: 14px;
   --shadow: 0 1px 2px rgba(31, 39, 51, 0.06), 0 4px 16px rgba(31, 39, 51, 0.06);
   --font: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Тёмная тема переопределяет только цветовые переменные — вся
+   палитра приложения собрана в кастомных свойствах, поэтому
+   переключение мгновенное и без дублирования правил. */
+[data-theme="dark"] {
+  --c-bg: #12141c;
+  --c-surface: #1e212c;
+  --c-border: #313646;
+  --c-text: #e6e9f0;
+  --c-muted: #8f96aa;
+  --c-accent: #7c8af0;
+  --c-accent-dark: #6574e0;
+  --c-accent-soft: #272b3e;
+  --c-user-bubble: #2d4229;
+  --c-danger: #e5484d;
+  --c-danger-dark: #f2555a;
+  --c-mark: #6b5d1e;
+  --c-hover: rgba(124, 138, 240, 0.18);
+  --c-hover-neutral: rgba(230, 233, 240, 0.08);
+  --c-dots: rgba(124, 138, 240, 0.14);
+  --c-empty: rgba(30, 33, 44, 0.85);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Переключатель темы: в светлой показываем луну, в тёмной — солнце. */
+.theme-toggle__sun {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle__sun {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle__moon {
+  display: none;
 }
 
 * {
@@ -85,7 +126,7 @@ body {
 }
 
 .icon-btn:hover {
-  background: rgba(74, 86, 198, 0.08);
+  background: var(--c-hover);
   color: var(--c-accent);
 }
 
@@ -117,7 +158,7 @@ body {
 }
 
 .btn--ghost:hover {
-  background: rgba(31, 39, 51, 0.06);
+  background: var(--c-hover-neutral);
   color: var(--c-text);
 }
 
@@ -127,7 +168,7 @@ body {
 }
 
 .btn--danger:hover {
-  background: #c93a3f;
+  background: var(--c-danger-dark);
 }
 
 /* ---------- Шапка ---------- */
@@ -328,7 +369,7 @@ body {
   overflow-y: auto;
   padding: 18px 16px 24px;
   scroll-behavior: auto;
-  background-image: radial-gradient(rgba(74, 86, 198, 0.10) 1px, transparent 1.4px);
+  background-image: radial-gradient(var(--c-dots) 1px, transparent 1.4px);
   background-size: 22px 22px;
 }
 
@@ -337,7 +378,7 @@ body {
   max-width: 320px;
   padding: 14px 18px;
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--c-empty);
   color: var(--c-muted);
   text-align: center;
 }
