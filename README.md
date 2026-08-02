@@ -4,8 +4,6 @@
 ![AppVeyor](https://ci.appveyor.com/api/projects/status/github/devlop12x-crypto/chaos-organizer?branch=main&svg=true)
 <!-- ⚠️ Ссылку на бейдж AppVeyor нужно заменить на настоящую после подключения репозитория — см. раздел "Настройка AppVeyor" ниже. -->
 
-Дипломный проект курса **«Продвинутый JavaScript в браузере»** (Нетология).
-
 Chaos Organizer — веб-сервис в духе «Сохранённых сообщений» Telegram: чат-органайзер, в который можно отправлять заметки, ссылки и файлы, а бот помогает навести порядок в этом хаосе.
 
 - 🌐 **Демо (фронтенд):** https://devlop12x-crypto.github.io/chaos-organizer/
